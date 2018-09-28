@@ -7,6 +7,8 @@ module Lib
     ) where
 
 import Data.List
+import Data.Char
+import Data.String
 
 someFunc :: IO ()
 someFunc = putStrLn "someFunc"
@@ -25,3 +27,11 @@ rotateList' rotations list = take (length list) $ drop rotations (cycle list)
 
 modCheck x = filter (test) x
     where test x = mod x 2 == 0
+
+filterByFirstLetter :: Char -> String -> [String] -> [String]
+filterByFirstLetter l name acc  
+    | name!!0 == l = name:acc
+    | otherwise = acc
+
+upperNames :: String -> String
+upperNames (x:xs) = (toUpper x):xs
